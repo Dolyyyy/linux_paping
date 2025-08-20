@@ -28,8 +28,8 @@ esac
 
 echo "📥 Downloading binary for $ARCH..."
 
-# Download binary directly
-curl -fsSL "https://raw.githubusercontent.com/Dolyyyy/linux_paping/main/binaries/$BINARY" -o /tmp/paping
+# Download binary directly (with timestamp to avoid cache)
+curl -fsSL "https://raw.githubusercontent.com/Dolyyyy/linux_paping/main/binaries/$BINARY?t=$(date +%s)" -o /tmp/paping
 
 # Make executable and install
 chmod +x /tmp/paping
@@ -45,7 +45,7 @@ rm -f /tmp/paping
 echo "✅ paping C version installed successfully!"
 echo ""
 echo "Usage examples:"
-echo "  sudo paping 8.8.8.8                    # ICMP ping"
+echo "  paping 8.8.8.8                    # ICMP ping (sans sudo)"
 echo "  paping 8.8.8.8 -p 443                  # TCP ping"
 echo "  paping 8.8.8.8 -p 53 -u                # UDP ping"
 echo "  paping 8.8.8.8 -p 443 -c 5 -i 0.5     # 5 pings with 0.5s interval"
