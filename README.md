@@ -33,6 +33,8 @@ paping 8.8.8.8 -p 443 -c 5   # 5 pings TCP
 ## ⚡ Avantages
 
 - **Plus rapide** que la version Python
-- **Installation simple** en une commande
+- **Installation instantanée** - pas de compilation
+- **Support multi-architecture** - x86_64, ARM64, ARM32
 - **Même interface** que l'original
-- **Pas de dépendances** après installation
+- **Pas de dépendances** - binaire statique
+- **Pas besoin de gcc** - télécharge directement le binaire

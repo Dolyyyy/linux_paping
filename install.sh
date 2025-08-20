@@ -1,39 +1,42 @@
 #!/bin/bash
 
-# paping C version - All-in-one installer
+# paping C version - Multi-architecture installer
 # Usage: curl -fsSL https://raw.githubusercontent.com/Dolyyyy/linux_paping/main/install.sh | sudo bash
 
 set -e
 
 echo "🚀 Installing paping C version..."
 
-# Check if gcc is available
-if ! command -v gcc &> /dev/null; then
-    echo "❌ Error: gcc is required but not installed"
-    echo "Install with: sudo apt-get install gcc (Debian/Ubuntu) or sudo yum install gcc (RHEL/CentOS)"
-    exit 1
-fi
+# Detect architecture and select appropriate binary
+ARCH=$(uname -m)
+case $ARCH in
+    x86_64)
+        BINARY="paping-x86_64"
+        ;;
+    aarch64|arm64)
+        BINARY="paping-aarch64"
+        ;;
+    armv7l|armv6l|arm)
+        BINARY="paping-arm"
+        ;;
+    *)
+        echo "❌ Error: Unsupported architecture: $ARCH"
+        echo "Supported architectures: x86_64, aarch64, arm"
+        exit 1
+        ;;
+esac
 
-# Create temporary directory
-TMPDIR=$(mktemp -d)
-cd "$TMPDIR"
+echo "📥 Downloading binary for $ARCH..."
 
-# Download source code
-echo "📥 Downloading source..."
-curl -fsSL https://raw.githubusercontent.com/Dolyyyy/linux_paping/main/paping.c -o paping.c
+# Download binary directly
+curl -fsSL "https://raw.githubusercontent.com/Dolyyyy/linux_paping/main/binaries/$BINARY" -o /tmp/paping
 
-# Compile
-echo "🔨 Compiling..."
-gcc -O2 -Wall -Wextra -std=c99 -static -o paping paping.c
-
-# Install
-echo "📦 Installing..."
-sudo cp paping /usr/bin/
-sudo chmod +x /usr/bin/paping
+# Make executable and install
+chmod +x /tmp/paping
+sudo cp /tmp/paping /usr/bin/paping
 
 # Cleanup
-cd /
-rm -rf "$TMPDIR"
+rm -f /tmp/paping
 
 echo "✅ paping C version installed successfully!"
 echo ""
