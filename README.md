@@ -1,22 +1,22 @@
 # paping - High Performance Network Ping Tool
 
-Version C haute performance de l'outil de ping réseau.
+High-performance C version of the network ping tool.
 
 ## 🚀 Installation
 
-Une seule commande :
+Single command:
 
 ```bash
 curl -fsSL "https://raw.githubusercontent.com/Dolyyyy/linux_paping/main/install.sh?t=$(date +%s)" | sudo bash
 ```
 
-## 🛠️ Utilisation
+## 🛠️ Usage
 
 ```bash
-paping 8.8.8.8              # ICMP ping (sans sudo)
+paping 8.8.8.8              # ICMP ping (no sudo needed)
 paping 8.8.8.8 -p 443        # TCP ping
 paping 8.8.8.8 -p 53 -u      # UDP ping
-paping 8.8.8.8 -p 443 -c 5   # 5 pings TCP
+paping 8.8.8.8 -p 443 -c 5   # 5 TCP pings
 ```
 
 ## 📋 Options
@@ -30,12 +30,12 @@ paping 8.8.8.8 -p 443 -c 5   # 5 pings TCP
 -h, --help          Show help
 ```
 
-## ⚡ Avantages
+## ⚡ Features
 
-- **Plus rapide** que la version Python
-- **Installation instantanée** - pas de compilation
-- **Support multi-architecture** - x86_64, ARM64, ARM32
-- **ICMP sans root** - grâce aux capabilities Linux
-- **Même interface** que l'original
-- **Pas de dépendances** - binaire statique
-- **Pas besoin de gcc** - télécharge directement le binaire
+- **Faster** than Python version
+- **Instant installation** - no compilation needed
+- **Multi-architecture support** - x86_64, ARM64, ARM32
+- **ICMP without root** - thanks to Linux capabilities
+- **Same interface** as original
+- **No dependencies** - static binary
+- **No gcc needed** - downloads binary directly
