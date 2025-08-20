@@ -7,13 +7,13 @@ Version C haute performance de l'outil de ping réseau.
 Une seule commande :
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Dolyyyy/linux_paping/main/install.sh | sudo bash
+curl -fsSL "https://raw.githubusercontent.com/Dolyyyy/linux_paping/main/install.sh?t=$(date +%s)" | sudo bash
 ```
 
 ## 🛠️ Utilisation
 
 ```bash
-sudo paping 8.8.8.8          # ICMP ping
+paping 8.8.8.8              # ICMP ping (sans sudo)
 paping 8.8.8.8 -p 443        # TCP ping
 paping 8.8.8.8 -p 53 -u      # UDP ping
 paping 8.8.8.8 -p 443 -c 5   # 5 pings TCP
@@ -35,6 +35,7 @@ paping 8.8.8.8 -p 443 -c 5   # 5 pings TCP
 - **Plus rapide** que la version Python
 - **Installation instantanée** - pas de compilation
 - **Support multi-architecture** - x86_64, ARM64, ARM32
+- **ICMP sans root** - grâce aux capabilities Linux
 - **Même interface** que l'original
 - **Pas de dépendances** - binaire statique
 - **Pas besoin de gcc** - télécharge directement le binaire
