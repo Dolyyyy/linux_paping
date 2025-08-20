@@ -35,6 +35,10 @@ curl -fsSL "https://raw.githubusercontent.com/Dolyyyy/linux_paping/main/binaries
 chmod +x /tmp/paping
 sudo cp /tmp/paping /usr/bin/paping
 
+# Set capabilities for ICMP without root
+echo "🔧 Setting capabilities for ICMP without root..."
+sudo setcap cap_net_raw+ep /usr/bin/paping
+
 # Cleanup
 rm -f /tmp/paping
 
